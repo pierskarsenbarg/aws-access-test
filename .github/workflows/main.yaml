@@ -8,7 +8,7 @@ on:
       - main
 jobs:
   up:
-    name: Update site
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,7 +29,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: ${{secrets.AWS_ASSUME_ROLE}}
-          role-session-name: githubactions
+          role-session-name: aws-access-test-session
           aws-region: eu-west-1
       - run: npm ci
       - uses: pulumi/actions@v5
